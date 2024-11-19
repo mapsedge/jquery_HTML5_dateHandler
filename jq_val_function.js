@@ -27,20 +27,35 @@
 			return originalVal.call(this);
 		} else {
 			// Setter: Reformat any date to 'yyyy-mm-dd' or set blank on error
+		
 			if (this.is("input[type='date']")) {
 				let formattedValue = "";
 				if (value === "today" || value === "now") {
 					formattedValue = toISO(new Date());
+
+				} else if (value === "first") { // month to date
+					formattedValue = toISO(new Date(new Date().getFullYear(), new Date().getMonth(), 1));
+
+				} else if (value === "prevfirst") { // month to date
+					formattedValue = toISO(new Date(new Date().getFullYear(), new Date().getMonth() - 1, 1));
+
+				} else if (value === "prevlast") { // last month
+					formattedValue = toISO(new Date(new Date().getFullYear(), new Date().getMonth(), 0));
+					console.log("[592852] formattedValue", formattedValue);
+
 				} else if (value === "tomorrow") {
 					const tomorrow = new Date();
 					tomorrow.setDate(tomorrow.getDate() + 1);
 					formattedValue = toISO(tomorrow);
+
 				} else if (value === "yesterday") {
 					const yesterday = new Date();
 					yesterday.setDate(yesterday.getDate() - 1);
 					formattedValue = toISO(yesterday);
+
 				} else if (value === "") {
 					formattedValue = "";
+
 				} else if (/^[+-]\d+[dmy]$/.test(value)) {
 					const today = new Date();
 					const amount = parseInt(value.slice(1), 10);
