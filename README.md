@@ -31,7 +31,7 @@ The plugin also accepts:
 
 #Usage
 
-Just include the script in your project. Use the val function as normal.
+Just include the script in your project. Use the jQuery val function as normal.
 
     $("#myDateControl").val('11/15/2023')
 
