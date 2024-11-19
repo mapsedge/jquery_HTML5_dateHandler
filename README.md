@@ -17,6 +17,12 @@ The plugin also accepts:
 
     tomorrow
 
+    first // first day of current month
+
+    prevfirst // first day of last month
+
+    prevlast // last day of last month
+
     +n[mdy] 
 
     [mdy] = month, day, or year
